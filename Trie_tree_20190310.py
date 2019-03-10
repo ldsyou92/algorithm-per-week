@@ -9,6 +9,8 @@ Project:https://github.com/ldsyou92/algorithm-per-week/new/master
 Created on 2019/03/10
 """
 
+import time
+
 class Trie:
     # word_end = -1
 
