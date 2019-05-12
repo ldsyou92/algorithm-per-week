@@ -1,8 +1,10 @@
 #! /usr/bin/python
 # -*- coding:utf-8 -*-
 """
-处理数据，去掉html标签并对数据进行标注
-Created by lidongsheng on 2019/03/31
+对字符串去停用词后分词，
+按fasttext的格式打标签
+格式为:"__label__<label_name> <text>"
+Created by lidongsheng on 2019/04/25
 """
 import jieba
 from delete_html import FilterTag
@@ -10,15 +12,14 @@ from delete_html import FilterTag
 def process_input():
     filters = FilterTag()
     # 相关性小标记为1，过审的为0
-    fw = open('test_101.txt', 'w')
-    with open('test_101.csv', 'r') as f:
+    fw = open('val_001.txt', 'w')
+    with open('article_2weeks_001.txt', 'r') as f:
         input = f.readlines()
     for each in input:
         article = filters.filterHtmlTag(each)
         line = seg_sentence(article)
-        print(line)
-        fw.write("1\t"+line + "\n")
-
+        #print(line)
+        fw.write("__label__001\t"+line + "\n")
     fw.close()
 
 
